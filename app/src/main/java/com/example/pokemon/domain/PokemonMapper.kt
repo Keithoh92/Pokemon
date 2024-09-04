@@ -64,6 +64,7 @@ fun List<StatsDTO>.toPokemonStats(): List<PokemonStat> {
 
 fun PokemonDTO.toPokemon(): com.example.pokemon.ui.pokemon.view.model.Pokemon {
     return com.example.pokemon.ui.pokemon.view.model.Pokemon(
+        id = this.url.substringAfterLast("pokemon/").trimEnd('/').toInt(),
         name = this.name,
         url = this.url
     )

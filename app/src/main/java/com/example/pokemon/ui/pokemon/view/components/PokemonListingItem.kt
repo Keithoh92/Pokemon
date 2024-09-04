@@ -58,7 +58,7 @@ fun PokemonListingItem(
 fun PokemonScreenPreview() {
     PokemonTheme {
         PokemonListingItem(
-            pokemon = Pokemon("Charizad", ""),
+            pokemon = Pokemon(1, "Charizad", ""),
             onPokemonClicked = {}
         )
     }

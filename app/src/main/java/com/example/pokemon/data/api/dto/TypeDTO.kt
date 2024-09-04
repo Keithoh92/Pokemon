@@ -1,4 +1,4 @@
-package com.example.pokemon.data.api.dao
+package com.example.pokemon.data.api.dto
 
 data class TypeDTO(
     val slot: Int,

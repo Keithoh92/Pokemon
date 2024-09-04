@@ -1,11 +1,11 @@
-package com.example.pokemon.data.api.repository
+package com.example.pokemon.data.api.paging
 
 import android.net.http.HttpException
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.pokemon.data.api.dao.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
 import com.example.pokemon.data.api.remote.PokemonApi
 import java.io.IOException
 

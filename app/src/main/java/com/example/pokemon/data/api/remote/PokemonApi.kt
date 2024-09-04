@@ -1,12 +1,11 @@
 package com.example.pokemon.data.api.remote
 
-import com.example.pokemon.data.api.dao.PokemonAPIResponse
-import com.example.pokemon.data.api.dao.PokemonDetailsAPIResponse
+import com.example.pokemon.data.api.dto.PokemonAPIResponse
+import com.example.pokemon.data.api.dto.PokemonDetailsAPIResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.Url
 
 interface PokemonApi {
 

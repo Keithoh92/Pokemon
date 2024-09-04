@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.pokemon.data.api.dao.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
 import com.example.pokemon.domain.api.repository.PokemonRepository
 import com.example.pokemon.domain.toPokemon
 import com.example.pokemon.ui.pokemon.effect.PokemonScreenEffect

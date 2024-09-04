@@ -2,12 +2,12 @@ package com.example.pokemon.data
 
 import com.example.pokemon.BaseTest
 import com.example.pokemon.common.Resource
-import com.example.pokemon.data.api.dao.PokemonDetailsAPIResponse
-import com.example.pokemon.data.api.dao.SpritesDTO
-import com.example.pokemon.data.api.dao.StatDTO
-import com.example.pokemon.data.api.dao.StatsDTO
-import com.example.pokemon.data.api.dao.TypeDTO
-import com.example.pokemon.data.api.dao.TypeDetailDTO
+import com.example.pokemon.data.api.dto.PokemonDetailsAPIResponse
+import com.example.pokemon.data.api.dto.SpritesDTO
+import com.example.pokemon.data.api.dto.StatDTO
+import com.example.pokemon.data.api.dto.StatsDTO
+import com.example.pokemon.data.api.dto.TypeDTO
+import com.example.pokemon.data.api.dto.TypeDetailDTO
 import com.example.pokemon.data.api.remote.PokemonApi
 import com.example.pokemon.domain.api.repository.PokemonRepository
 import io.mockk.coEvery

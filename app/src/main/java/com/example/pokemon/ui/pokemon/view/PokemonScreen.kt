@@ -28,7 +28,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.pokemon.data.api.dao.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
 import com.example.pokemon.domain.toPokemon
 import com.example.pokemon.ui.common.PokemonError
 import com.example.pokemon.ui.common.ThemePreview

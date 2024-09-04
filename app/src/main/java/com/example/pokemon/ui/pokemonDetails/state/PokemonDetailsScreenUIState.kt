@@ -1,6 +1,6 @@
 package com.example.pokemon.ui.pokemonDetails.state
 
-import com.example.pokemon.data.api.dao.SpritesDTO
+import com.example.pokemon.data.api.dto.SpritesDTO
 import com.example.pokemon.domain.toSpritesList
 import com.example.pokemon.ui.pokemon.view.model.PokemonDetails
 import com.example.pokemon.ui.pokemon.view.model.PokemonStat

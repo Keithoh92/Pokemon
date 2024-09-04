@@ -1,4 +1,4 @@
-package com.example.pokemon.data.api.dao
+package com.example.pokemon.data.api.dto
 
 import com.google.gson.annotations.SerializedName
 

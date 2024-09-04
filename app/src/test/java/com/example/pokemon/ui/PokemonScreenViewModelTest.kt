@@ -1,7 +1,7 @@
 package com.example.pokemon.ui
 
 import com.example.pokemon.BaseTest
-import com.example.pokemon.data.api.dao.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
 import com.example.pokemon.domain.api.repository.PokemonRepository
 import com.example.pokemon.domain.toPokemon
 import com.example.pokemon.ui.pokemon.event.PokemonScreenEvent

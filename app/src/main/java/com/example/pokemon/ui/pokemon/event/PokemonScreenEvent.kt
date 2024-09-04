@@ -1,6 +1,6 @@
 package com.example.pokemon.ui.pokemon.event
 
-import com.example.pokemon.data.api.dao.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
 
 sealed class PokemonScreenEvent {
     data class OnPokemonClicked(val name: String) : PokemonScreenEvent()

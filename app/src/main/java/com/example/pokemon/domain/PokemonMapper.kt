@@ -1,11 +1,11 @@
 package com.example.pokemon.domain
 
-import com.example.pokemon.data.api.dao.PokemonDTO
-import com.example.pokemon.data.api.dao.PokemonDetailsAPIResponse
-import com.example.pokemon.data.api.dao.SpritesDTO
-import com.example.pokemon.data.api.dao.StatsDTO
-import com.example.pokemon.data.api.dao.TypeDTO
-import com.example.pokemon.data.api.dao.TypeDetailDTO
+import com.example.pokemon.data.api.dto.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDetailsAPIResponse
+import com.example.pokemon.data.api.dto.SpritesDTO
+import com.example.pokemon.data.api.dto.StatsDTO
+import com.example.pokemon.data.api.dto.TypeDTO
+import com.example.pokemon.data.api.dto.TypeDetailDTO
 import com.example.pokemon.ui.pokemon.view.model.PokemonDetails
 import com.example.pokemon.ui.pokemon.view.model.PokemonStat
 import com.example.pokemon.ui.pokemon.view.model.PokemonType

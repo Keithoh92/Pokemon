@@ -6,10 +6,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.pokemon.common.Resource
-import com.example.pokemon.data.api.dao.PokemonDTO
-import com.example.pokemon.data.api.dao.PokemonDetailsAPIResponse
+import com.example.pokemon.data.api.dto.PokemonDTO
+import com.example.pokemon.data.api.dto.PokemonDetailsAPIResponse
 import com.example.pokemon.data.api.remote.PokemonApi
-import com.example.pokemon.data.api.repository.PokemonApiPagingSource
+import com.example.pokemon.data.api.paging.PokemonApiPagingSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

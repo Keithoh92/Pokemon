@@ -41,7 +41,8 @@ class PokemonScreenViewModel @Inject constructor(
         MutableStateFlow(value = PagingData.empty())
     val pokemonState: MutableStateFlow<PagingData<PokemonDTO>> get() = _pokemonDTOState
 
-    private val listOfPokemonLoaded = mutableListOf<Pokemon>()
+    @VisibleForTesting
+    val listOfPokemonLoaded = mutableListOf<Pokemon>()
 
     init {
         fetchPokemon()
@@ -57,11 +58,23 @@ class PokemonScreenViewModel @Inject constructor(
         }
     }
 
-    private fun resetScrollToId() {
+    @VisibleForTesting
+    fun fetchPokemon() = viewModelScope.launch {
+        pokemonRepository.getPokemonStream()
+            .distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .collect {
+                _pokemonDTOState.value = it
+            }
+    }
+
+    @VisibleForTesting
+    fun resetScrollToId() {
         _uiState.update { it.copy(scrollToPokemonById = Pair(false, -1)) }
     }
 
-    private fun savePokemon(pokemonList: List<PokemonDTO?>) {
+    @VisibleForTesting
+    fun savePokemon(pokemonList: List<PokemonDTO?>) {
         pokemonList.forEach {
             val pokemon = it?.toPokemon()
             if (pokemon != null) {
@@ -71,14 +84,16 @@ class PokemonScreenViewModel @Inject constructor(
         }
     }
 
-    private fun onSelectSearchedTvShow(id: Int) {
+    @VisibleForTesting
+    fun onSelectSearchedTvShow(id: Int) {
         _uiState.update { it.copy(
             scrollToPokemonById = Pair(true, id),
             searchedTvShows = emptyList()
         )}
     }
 
-    private fun onSearchTextChanged(prefix: String) {
+    @VisibleForTesting
+    fun onSearchTextChanged(prefix: String) {
         val pokemon = autoCompleteSearchSystem.search(prefix.lowercase())
 
         val listOfSearchedPokemon = pokemon.map { suggestedPokemon ->
@@ -100,15 +115,5 @@ class PokemonScreenViewModel @Inject constructor(
     @VisibleForTesting
     fun navigateToPokemonDetails(name: String) = viewModelScope.launch {
         _effect.send(PokemonScreenEffect.Navigation.OnNavigateToPokemonDetails(name))
-    }
-
-    @VisibleForTesting
-    fun fetchPokemon() = viewModelScope.launch {
-        pokemonRepository.getPokemonStream()
-            .distinctUntilChanged()
-            .cachedIn(viewModelScope)
-            .collect {
-                _pokemonDTOState.value = it
-            }
     }
 }

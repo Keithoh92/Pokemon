@@ -10,6 +10,7 @@ import com.example.pokemon.ui.pokemon.view.model.PokemonDetails
 import com.example.pokemon.ui.pokemon.view.model.PokemonStat
 import com.example.pokemon.ui.pokemon.view.model.PokemonType
 import com.example.pokemon.ui.pokemon.view.model.PokemonTypeDetail
+import com.example.pokemon.ui.pokemon.view.model.PokemonView
 import com.example.pokemon.ui.pokemon.view.model.Stat
 
 fun PokemonDetailsAPIResponse.toPokemonDetails(): PokemonDetails {
@@ -63,7 +64,7 @@ fun List<StatsDTO>.toPokemonStats(): List<PokemonStat> {
 }
 
 fun PokemonDTO.toPokemon(): com.example.pokemon.ui.pokemon.view.model.Pokemon {
-    return com.example.pokemon.ui.pokemon.view.model.Pokemon(
+    return PokemonView(
         id = this.url.substringAfterLast("pokemon/").trimEnd('/').toInt(),
         name = this.name,
         url = this.url

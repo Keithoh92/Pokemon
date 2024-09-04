@@ -46,7 +46,7 @@ import kotlinx.coroutines.flow.flowOf
 fun PokemonScreen(
     uiState: StateFlow<PokemonScreenUIState>,
     onEvent: (PokemonScreenEvent) -> Unit,
-    pokemon: LazyPagingItems<PokemonDTO>
+    pokemon: LazyPagingItems<PokemonDTO>,
 ) {
 
     val listState = rememberLazyListState()
@@ -60,7 +60,7 @@ fun PokemonScreen(
 
     LaunchedEffect(key1 = state.scrollToPokemonById.first, block = {
         if (state.scrollToPokemonById.first) {
-            listState.animateScrollToItem(state.scrollToPokemonById.second-1)
+            listState.animateScrollToItem(state.scrollToPokemonById.second - 1)
             onEvent(PokemonScreenEvent.SetScrollToIdToFalse)
             hideKeyboard = true
         }
@@ -72,20 +72,21 @@ fun PokemonScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
+                    .padding(padding)
                     .clickable { hideKeyboard = true }
             ) {
-                Box(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    SearchBar(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .zIndex(1f),
-                        onEvent = onEvent,
-                        suggestions = state.searchedTvShows,
-                        hideKeyboard = hideKeyboard,
-                        onFocusClear = { hideKeyboard = false }
-                    )
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    if (!pokemon.loadState.hasError) {
+                        SearchBar(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .zIndex(1f),
+                            onEvent = onEvent,
+                            suggestions = state.searchedTvShows,
+                            hideKeyboard = hideKeyboard,
+                            onFocusClear = { hideKeyboard = false }
+                        )
+                    }
 
                     LazyColumn(
                         state = listState,
@@ -114,10 +115,15 @@ fun PokemonScreen(
                             Text(text = "Loading, please wait")
                         }
                     }
+
                     loadState.refresh is LoadState.Error -> {
                         val error = pokemon.loadState.refresh as LoadState.Error
-                        PokemonError(error = error.error.localizedMessage ?: "Error", modifier = Modifier)
+                        PokemonError(
+                            error = error.error.localizedMessage ?: "Error",
+                            modifier = Modifier
+                        )
                     }
+
                     loadState.append is LoadState.Loading -> {
                         Column(
                             modifier = Modifier.fillMaxSize(),
@@ -127,9 +133,13 @@ fun PokemonScreen(
                             LinearProgressIndicator()
                         }
                     }
+
                     loadState.append is LoadState.Error -> {
                         val error = pokemon.loadState.refresh as LoadState.Error
-                        PokemonError(error = error.error.localizedMessage ?: "Error", modifier = Modifier)
+                        PokemonError(
+                            error = error.error.localizedMessage ?: "Error",
+                            modifier = Modifier
+                        )
                     }
                 }
             }
@@ -145,17 +155,18 @@ fun PokemonScreenPreview() {
             PokemonScreen(
                 uiState = MutableStateFlow(PokemonScreenUIState(searchedTvShows = emptyList())),
                 onEvent = {},
-                pokemon = flowOf(PagingData.from(
-                    listOf(
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
-                        PokemonDTO("Charizad", ""),
+                pokemon = flowOf(
+                    PagingData.from(
+                        listOf(
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                            PokemonDTO("Charizad", ""),
+                        )
                     )
-                )
                 ).collectAsLazyPagingItems()
             )
         }
